@@ -1,9 +1,11 @@
-import java.util.Scanner;
-
-public class Kage extends Ninja{
+public final class Kage extends Ninja implements InterfaceCuravel{
 
     private String vila;
      private int nivelPoder;
+
+     public Kage(String nome, String aldeia, int chakra, int vida){
+        super(nome,  aldeia,  chakra,  vida);
+     }
 
 
 
@@ -24,25 +26,61 @@ public class Kage extends Ninja{
      }
 
 
+     
+    @Override
+    public void usarJutsu(Ninja alvo) {
+        int custo = 50;
+        int dano = 70;
+ 
+        if (getChakra() < custo) {
+            System.out.printf("%s não tem chakra para ativar Modo Sennin!%n", getNome());
+            return;
+        }
+ 
+        setChakra(getChakra() - custo);
+        alvo.receberDano(dano);
+        System.out.printf(" %s ativou o 'Modo Sennin' e atacou %s — Dano: %d | Chakra restante: %d%n",
+                getNome(), alvo.getNome(), dano, getChakra());
+    }
 
-
-      public void lerDados() {
-        Scanner sc = new Scanner(System.in);
-
-        System.out.print("Digite a vila: ");
-        vila = sc.nextLine();
-
-        System.out.print("Digite o nível de poder: ");
-        nivelPoder = sc.nextInt();
+   
+   
+   //aqui so o KAGE pode usar
+    public void jutsuProibido(Ninja alvo) {
+        int custo = 80;
+        int dano = 100;
+ 
+        if (getChakra() < custo) {
+            System.out.printf("%s não tem chakra para o Jutsu Proibido!%n", getNome());
+            return;
+        }
+ 
+        setChakra(getChakra() - custo);
+        alvo.receberDano(dano);
+        System.out.printf(" [JUTSU PROIBIDO] %s destruiu %s com poder máximo — Dano: %d!%n",
+                getNome(), alvo.getNome(), dano);
     }
 
 
-     @Override
-     public void usarJutsu(){
-        System.out.println("Ativação do modo sennin");
 
-     }
 
+    // ── InterfaceCuravel ─────────────────────────────────────────────────
+ 
+    @Override
+    public void curarNinja() {
+        int curaKage = cura_chakra_cura * 2; 
+        if (getChakra() < bonus_vida_cura) {
+            System.out.printf("%s não tem chakra para se curar!%n", getNome());
+            return;
+        }
+
+        setChakra(getChakra() - cura_chakra_cura);
+        setVida(getVida() + curaKage);
+
+        System.out.printf(" %s (Kage) se curou com poder superior! Vida: %d%n",
+                getNome(), getVida());
 
     
+}
+
 }
