@@ -53,7 +53,7 @@ public class ClasseTeste {
 
         // Kage enfrenta todos os outros ninjas
         System.out.println("\n========================================");
-        System.out.println("           Kage enfrenta todos             ");
+        System.out.println("           KAGE ENFRENTA TODOS           ");
         System.out.println("========================================");
 
         Ninja[] todos = { madarUchiha, naruto, shikamaru, kiba };
@@ -65,7 +65,7 @@ public class ClasseTeste {
 
        
         System.out.println("\n========================================");
-        System.out.println( "  InterfaceCuravel -   Kage se cura     ");
+        System.out.println( "  InterfaceCuravel -   KAGE SE CURA    ");
         System.out.println("========================================");
         System.out.printf("Vida antes: %d%n", minato.getVida());
         minato.curarNinja();
