@@ -8,58 +8,63 @@ Este projeto foi desenvolvido com o objetivo de praticar e demonstrar os quatro 
 
 ## 🏗️ Estrutura do Projeto
 
-O sistema é composto por 9 arquivos Java organizados de forma a separar responsabilidades e garantir a escalabilidade do código[cite: 11]:
+O sistema é composto por 9 arquivos Java organizados para separar as responsabilidades e garantir a escalabilidade do código:
 
 | Arquivo | Tipo | Finalidade |
 | :--- | :--- | :--- |
-| `Ninja.java` | Classe Abstrata | Base de todos os ninjas. [cite_start]Define atributos e métodos comuns[cite: 12]. |
-| `Uchiha.java` | Subclasse | [cite_start]Representa o Clã Uchiha; possui Sharingan e Amaterasu[cite: 12]. |
-| `Uzumaki.java` | Subclasse | [cite_start]Representa o Clã Uzumaki; possui Rasengan e Modo Sennin[cite: 12]. |
-| `Nara.java` | Subclasse | [cite_start]Representa o Clã Nara; possui manipulação de sombras[cite: 12]. |
-| `Yuga.java` | Subclasse | [cite_start]Representa o Clã Hyuga; realiza ataques combinados[cite: 12]. |
-| `Kage.java` | Subclasse Final | [cite_start]O ninja mais poderoso; implementa cura e jutsus proibidos[cite: 12, 82]. |
-| `InterfaceCuravel.java` | Interface | [cite_start]Define o contrato de cura implementado pelo Kage[cite: 12]. |
-| `Arena.java` | Classe Auxiliar | [cite_start]Gerencia as batalhas e o fluxo de rodadas[cite: 12]. |
-| `ClasseTeste.java` | Classe Principal | [cite_start]Instancia os ninjas e demonstra os conceitos na prática[cite: 12]. |
+| `Ninja.java` | Classe Abstrata | Base de todos os ninjas. Define atributos e métodos comuns. |
+| `Uchiha.java` | Subclasse | Clã Uchiha; possui Sharingan e Amaterasu. |
+| `Uzumaki.java` | Subclasse | Clã Uzumaki; possui Rasengan e Modo Sennin. |
+| `Nara.java` | Subclasse | Clã Nara; possui manipulação de sombras amplificada. |
+| `Yuga.java` | Subclasse | Clã Hyuga; realiza ataques combinados com invocações. |
+| `Kage.java` | Subclasse Final | O ninja mais poderoso; implementa cura e jutsus proibidos. |
+| `InterfaceCuravel.java` | Interface | Define o contrato de cura implementado pelo Kage. |
+| `Arena.java` | Classe Auxiliar | Gerencia o combate, turnos e fluxo de rodadas. |
+| `ClasseTeste.java` | Classe Principal | Instancia os ninjas e executa as demonstrações. |
 
 ---
 
 ## 💎 Pilares da POO Aplicados
 
-O projeto serve como uma prova de conceito para os seguintes fundamentos:
-
-### 1. Abstração
-A classe `Ninja` é **abstract**, o que significa que não pode ser instanciada diretamente[cite: 15]. [cite_start]Ela define o contrato `usarJutsu()`, obrigando cada clã a fornecer sua própria implementação.
-
-### 2. Herança
-[cite_start]Todos os clãs estendem a classe `Ninja`, herdando automaticamente atributos como vida e chakra. Isso evita a repetição de código (Princípio DRY).
-
-### 3. Encapsulamento
-[cite_start]Os atributos `vida` e `chakra` são **private**[cite: 29]. [cite_start]O acesso é protegido por *getters* e *setters*, garantindo, por exemplo, que a vida nunca fique negativa através do método `receberDano()`[cite: 30, 31].
-
-### 4. Polimorfismo
-[cite_start]Um array do tipo `Ninja[]` pode armazenar qualquer subclasse[cite: 37]. [cite_start]Ao chamar `usarJutsu()`, o Java executa o comportamento específico do objeto real em tempo de execução[cite: 38, 43].
+* **Abstração:** A classe `Ninja` é abstract, definindo o contrato `usarJutsu()` sem implementar uma lógica genérica.
+* **Herança:** Clãs herdam de `Ninja`, reutilizando atributos como vida e chakra.
+* **Encapsulamento:** Atributos privados com acesso via métodos que validam regras de negócio.
+* **Polimorfismo:** Métodos sobrescritos permitem que um `Uchiha` e um `Uzumaki` reajam de formas diferentes ao mesmo comando.
 
 ---
 
-## ⚔️ Detalhes das Classes e Habilidades
+## ⚔️ Sistema de Batalha
+A classe `Arena` orquestra o confronto entre os ninjas, garantindo a separação entre a lógica de negócio e a execução:
 
-* [cite_start]**Uchiha:** Possui o sistema de **Sharingan**, que amplifica o dano do *Amaterasu* de 45 para 55[cite: 62, 63].
-* **Uzumaki:** Grande reserva de chakra. [cite_start]O **Modo Sennin** transforma o *Rasengan* no *Rasenshuriken*, aumentando o dano para 80[cite: 68, 70].
-* [cite_start]**Nara:** Especialistas em controle com o **Jutsu de Sombra**, que amplifica o dano no próximo golpe[cite: 72, 73].
-* [cite_start]**Hyuga (Yuga):** Ninja invocador que realiza ataques combinados com animais[cite: 76, 77].
-* [cite_start]**Kage:** Declarado como **final**, não pode ser estendido[cite: 82, 87]. [cite_start]É o único capaz de usar o **Jutsu Proibido** e se curar via `InterfaceCuravel`[cite: 83, 85].
-
----
-
-## 🧪 Resultados dos Testes
-
-[cite_start]O projeto foi validado com o **JDK 21** apresentando os seguintes comportamentos[cite: 96]:
-* [cite_start]**Batalha Madara vs Naruto:** Madara venceu com 10 de vida, validando a amplificação de dano do Sharingan[cite: 97].
-* [cite_start]**Recuperação de Status:** O sistema de descanso recuperou corretamente o chakra do Uzumaki de 125 para 155[cite: 97].
-* [cite_start]**Interface de Cura:** O Kage (Minato) recuperou vida de 180 para 220, utilizando o bônus de cura dupla[cite: 97].
-* [cite_start]**Validação de Chakra:** Mensagens de erro são exibidas corretamente quando não há chakra para Jutsus Proibidos[cite: 97].
+* 🥊 **Turnos de combate:** Controla quem ataca em cada momento.
+* 🔄 **Rodadas automáticas:** Fluxo contínuo até o fim da luta.
+* ⚡ **Uso de habilidades:** Gerencia o gasto de chakra e bônus de dano.
+* 🏆 **Declaração de vencedor:** Exibe o sobrevivente e o status final.
 
 ---
 
-> [cite_start]Desenvolvido como projeto de portfólio para demonstrar domínio técnico em Java e Arquitetura de Software[cite: 102, 103].
+## 🎭 Clãs e Habilidades Especiais
+
+| Clã | Habilidade Principal | Diferencial Técnico |
+| :--- | :--- | :--- |
+| **Uchiha** | `Amaterasu` | O **Sharingan** amplifica o dano de 45 para 55. |
+| **Uzumaki** | `Rasenshuriken` | O **Modo Sennin** potencializa o ataque para 80 de dano. |
+| **Nara** | `Jutsu de Sombra` | Especialista em controle, aumenta o próximo golpe para 28. |
+| **Hyuga** | `Ataque Combinado` | Ninja invocador que luta em conjunto com animais. |
+| **Kage** | `Jutsu Proibido` | Classe **final**; único que se cura via `InterfaceCuravel`. |
+
+---
+
+## 🧪 Testes Realizados
+O projeto foi validado com o **JDK 21**, cobrindo os seguintes comportamentos:
+
+* ✔ **Batalhas completas:** Vitória do Madara sobre o Naruto com 10 de vida restante.
+* ✔ **Buffs funcionando:** Dano amplificado corretamente pelo Sharingan e Sombras.
+* ✔ **Recuperação de chakra:** Sistema de descanso funcionando (Ex: 125 -> 155).
+* ✔ **Polimorfismo validado:** Diferentes comportamentos em um array do tipo `Ninja[]`.
+* ✔ **Interface aplicada:** Minato realizou a cura dupla (180 -> 220) com sucesso.
+* ✔ **Validação de Chakra:** Bloqueio de jutsus poderosos quando o chakra está insuficiente.
+
+---
+
+> Projeto desenvolvido para fins acadêmicos e portfólio técnico.
