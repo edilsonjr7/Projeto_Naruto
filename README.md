@@ -67,4 +67,3 @@ O projeto foi validado com o **JDK 21**, cobrindo os seguintes comportamentos:
 
 ---
 
-> Projeto desenvolvido para fins acadêmicos e portfólio técnico.
