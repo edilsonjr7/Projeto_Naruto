@@ -4,11 +4,11 @@
 [![Main Concept](https://img.shields.io/badge/Paradigma-Orientação%20a%20Objetos-blue.svg)](#-pilares-da-poo-aplicados)
 [![Theme](https://img.shields.io/badge/Temática-Universo%20Naruto-red.svg)](https://en.wikipedia.org/wiki/Naruto)
 
-[cite_start]Este projeto foi desenvolvido com o objetivo de praticar e demonstrar os quatro pilares da **Programação Orientada a Objetos (POO)** utilizando a linguagem Java[cite: 6]. [cite_start]Para tornar o aprendizado dinâmico, o sistema utiliza a temática do anime **Naruto**, simulando batalhas entre ninjas de diferentes clãs, cada um com atributos e habilidades exclusivas[cite: 7, 8].
+Este projeto foi desenvolvido com o objetivo de praticar e demonstrar os quatro pilares da **Programação Orientada a Objetos (POO)** utilizando a linguagem Java. Para tornar o aprendizado dinâmico, o sistema utiliza a temática do anime **Naruto**, simulando batalhas entre ninjas de diferentes clãs, cada um com atributos e habilidades exclusivas.
 
 ## 🏗️ Estrutura do Projeto
 
-[cite_start]O sistema é composto por 9 arquivos Java organizados de forma a separar responsabilidades e garantir a escalabilidade do código[cite: 11]:
+O sistema é composto por 9 arquivos Java organizados de forma a separar responsabilidades e garantir a escalabilidade do código[cite: 11]:
 
 | Arquivo | Tipo | Finalidade |
 | :--- | :--- | :--- |
@@ -26,13 +26,13 @@
 
 ## 💎 Pilares da POO Aplicados
 
-[cite_start]O projeto serve como uma prova de conceito para os seguintes fundamentos[cite: 13]:
+O projeto serve como uma prova de conceito para os seguintes fundamentos:
 
 ### 1. Abstração
-[cite_start]A classe `Ninja` é **abstract**, o que significa que não pode ser instanciada diretamente[cite: 15]. [cite_start]Ela define o contrato `usarJutsu()`, obrigando cada clã a fornecer sua própria implementação[cite: 16, 20].
+A classe `Ninja` é **abstract**, o que significa que não pode ser instanciada diretamente[cite: 15]. [cite_start]Ela define o contrato `usarJutsu()`, obrigando cada clã a fornecer sua própria implementação.
 
 ### 2. Herança
-[cite_start]Todos os clãs estendem a classe `Ninja`, herdando automaticamente atributos como vida e chakra[cite: 21, 22]. [cite_start]Isso evita a repetição de código (Princípio DRY)[cite: 27].
+[cite_start]Todos os clãs estendem a classe `Ninja`, herdando automaticamente atributos como vida e chakra. Isso evita a repetição de código (Princípio DRY).
 
 ### 3. Encapsulamento
 [cite_start]Os atributos `vida` e `chakra` são **private**[cite: 29]. [cite_start]O acesso é protegido por *getters* e *setters*, garantindo, por exemplo, que a vida nunca fique negativa através do método `receberDano()`[cite: 30, 31].
